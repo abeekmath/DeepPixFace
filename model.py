@@ -59,11 +59,11 @@ class DeepPix(Module):
         y = x.view(x.shape[0], -1)
         y = self.linear1(y)
         y = self.sigmoid2(y)
-        return y
+        return x, y
 
 if __name__ == "__main__":
     net = DeepPix()
     x = torch.rand([4, 3, 224, 224])
-    out, aux = net(x)
+    aux, out = net(x)
     print(out.shape)               
     print(aux.shape)

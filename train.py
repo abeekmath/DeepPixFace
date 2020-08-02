@@ -17,21 +17,23 @@ def train(dataloader_train, model, epochs, loss_fn, optimizer, batch_size):
     model.train()
 
     for epoch in range(epochs):
-        for i, data in tqdm(enumerate(dataloader_train, 0)):
+        for i, data in enumerate(dataloader_train, 0):
             inputs, labels = data["images"], data["labels"]
             inputs, labels = inputs.to(device), labels.to(device)
 
             optimizer.zero_grad()
 
-            outputs = model(inputs)
-            loss = loss_fn(outputs, labels)                 # Might want to alter loss function 
+            aux_op, fin_op = model(inputs)
+            aux_op = aux_op.view(aux_op.shape[0], -1)
+            labels = labels.view(batch_size, 1)
+            loss = loss_fn(aux_op, fin_op, labels)                          
             loss.backward()
             optimizer.step()
 
             if i % 100 == 0: 
                 print('Iteration: %d/%d, Loss: %0.2f' % (i, n_iters, loss.item()))
 
-            del inputs, labels, outputs 
+            del inputs, labels, aux_op, fin_op
             torch.cuda.empty_cache()
 
         loss_epoch_arr.append(loss.item())  

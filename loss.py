@@ -8,20 +8,18 @@ class CumulativeLoss(Module):
         self.beta = beta
 
     def forward(self, aux_op, final_op, label):
-        aux_loss = self.criterion(aux_op.squeeze(), CumulativeLoss._convertYLabel(label))
+        aux_label = torch.ones((label.shape[0], 196)).type(torch.FloatTensor).cuda()
+
+        for i in range(label.shape[0]):
+            aux_label[i] = aux_label[i]*label[i]
+
+        aux_loss = self.criterion(aux_op, aux_label)
         fin_loss = self.criterion(final_op, label)
         
-        #cumulative_loss = self.beta*aux_loss + (1-self.beta)*fin_loss
-        return fin_loss
+        cumulative_loss = self.beta*aux_loss + (1-self.beta)*fin_loss
+        return cumulative_loss
     
-    def _convertYLabel(y):
 
-        returnY = torch.ones((y.shape[0], 196)).type(torch.FloatTensor)
-
-        for i in range(y.shape[0]):
-            returnY[i] = returnY[i]*y[i]
-
-        returnY.cuda() 
 
 if __name__ == "__main__":
     label = torch.ones([4, 1], dtype=torch.float)
