@@ -140,8 +140,9 @@ cython_debug/
 # Additional
 *.csv
 *.zip
-*.txt
 research/
 notebooks/
 data/Training 
 data/Val
+data/train_list.txt
+data/val_public_list.txt

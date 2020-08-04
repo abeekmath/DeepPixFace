@@ -30,7 +30,7 @@ To be able to reproduce the results from the official implementation, we use the
 - Optimizer: Adam
 ```
 ### Usage:
-- Clone the repository [here](https://github.com/abhirupkamath/DeepPixFace/tree/master/config.py)
+- Clone the repository [here](https://github.com/abhirupkamath/DeepPixFace/master/config.py)
 - ``` python main.py ```
 - To run on a GPU, you need to enable cuda in the config file.
 
@@ -41,7 +41,7 @@ To be able to reproduce the results from the official implementation, we use the
 | Top5 error   |    0.15%    |             |
 
 ### Requirements:
-Check [requirements.txt](https://github.com/abhirupkamath/DeepPixFace/tree/master/requirements.txt).
+Check [requirements.txt](https://github.com/abhirupkamath/DeepPixFace/master/requirements.txt).
 
 ### Future Work:
 * Add visualization using TensboardX
