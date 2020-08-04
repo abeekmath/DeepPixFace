@@ -46,14 +46,14 @@ def eval_fn(model, data_loader, loss_fn, threshold=0.5):
             pred = torch.round(outputs)
             correct += (pred == labels.data).sum().item()
 
-            print('[{}/{} ({:.0f}%)]\tLoss: {:.3f}'.format(
-                batch_id * len(inputs), len(data_loader.dataset),
-                100. * batch_id / len(data_loader), batch_loss))
+            # print('[{}/{} ({:.0f}%)]\tLoss: {:.3f}'.format(
+            #     batch_id * len(inputs), len(data_loader.dataset),
+            #     100. * batch_id / len(data_loader), batch_loss))
                
-        test_loss /= len(data_loader)
-        test_accuracy = 100.0 * correct / len(data_loader)
+    test_loss /= len(data_loader.dataset)
+    test_accuracy = 100.0 * correct / len(data_loader.dataset)
 
-        return test_loss, test_accuracy
+    return test_loss, test_accuracy
 
 
 

@@ -1,3 +1,5 @@
+import shutil
+
 import torch 
 import torch.optim as optim 
 from torch.utils.data import DataLoader
@@ -7,6 +9,13 @@ import dataset
 from engine import train_fn, eval_fn
 from model import DeepPix
 from loss import CumulativeLoss
+
+def save_checkpoint(model, path, is_best = 0):
+    torch.save(model.state_dict(), self.config.checkpointdir)
+    print("[INFO] : Model Saved")
+    if is_best:
+        shutil.copyfile(self.config.checkpoint_dir + filename,
+                        self.config.checkpoint_dir + 'model_best.pth')
 
 
 def run_training(): 
@@ -24,7 +33,7 @@ def run_training():
     )
     test_dataset = dataset.Casia_surf(
         data_dir=config.DATA_DIR,
-        csv_file=config.TRAIN_FILE, 
+        csv_file=config.EVAL_FILE, 
         resize=(config.IMAGE_WIDTH, config.IMAGE_HEIGHT)
     )
     test_loader = DataLoader(
@@ -50,7 +59,7 @@ def run_training():
     
     print("Done Training")
 
-        
+
 if __name__ == "__main__":
     run_training()
 
