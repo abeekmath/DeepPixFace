@@ -73,10 +73,3 @@ if __name__ == "__main__":
     df['ir'] = df['ir'].apply(lambda x: os.path.normpath(x))
     
     df.to_csv(os.path.join(input_path, "valid.csv"), index=False)
-    
-
-
-
-
-
-
