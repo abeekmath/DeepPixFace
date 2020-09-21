@@ -4,7 +4,7 @@ A PyTorch implementation of [Deep Pixel-wise Binary Supervision for Face Present
 
 ## Table of Contents:
 
-- [CondenseNet-PyTorch](#deeppixface-pytorch)
+- [DeepPixFace-PyTorch](#deeppixface-pytorch)
     - [Data](#data)
     - [Model](#model)
     - [Experiment configs](#experiment-configs)
