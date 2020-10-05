@@ -1,6 +1,6 @@
 # DeepPixFace-PyTorch
 
-A PyTorch implementation of [Deep Pixel-wise Binary Supervision for Face Presentation Attack Detection](https://arxiv.org/abs/1907.04047)
+A PyTorch implementation of [Deep Pixel-wise Binary Supervision for Face Presentation Attack Detection](https://arxiv.org/abs/1907.04047) (ICB'19).
 
 ## Table of Contents:
 
